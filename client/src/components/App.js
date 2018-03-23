@@ -1,12 +1,45 @@
 // using because import because babel/webpack can handle this
-import React from 'react';
+import React, { Component } from 'react';
+import Header from './Header';
+import { connect } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
+import * as actions from '../actions';
 
-const App = () => {
-  return (
-    <div>
-      <a href="/auth/google">Log in!</a>
-    </div>
-  );
+const Dashboard = () => {
+  return <h2>Dashboard</h2>;
 };
 
-export default App;
+const SurveyNew = () => {
+  return <h2>SurveyNew</h2>;
+};
+
+const Landing = () => {
+  return <h2>Landing</h2>;
+};
+
+// BrowserRouter only takes one child
+// Pass in exact match so that the root doesn't greedily incorporate all other routes
+
+class App extends Component {
+  // componentWillMount is starting to get called multiple times, so we're sticking with Did, which is called once
+  componentDidMount() {
+    this.props.fetchUser();
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <BrowserRouter>
+          <div>
+            <Header />
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/surveys" component={Dashboard} />
+            <Route path="/surveys/new" component={SurveyNew} />
+          </div>
+        </BrowserRouter>
+      </div>
+    );
+  }
+}
+
+export default connect(null, actions)(App);

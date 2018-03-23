@@ -4,8 +4,12 @@ import App from './components/App';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
+import reduxThunk from 'redux-thunk';
 
-const store = createStore(reducers, {}, applyMiddleware());
+// Webpack assumes you mean an NPM module if you don't provide a path
+import 'materialize-css/dist/css/materialize.min.css';
+
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
   <Provider store={store}>
