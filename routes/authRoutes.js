@@ -15,7 +15,13 @@ module.exports = app => {
   // 3 - User grants permission. Google sends back code.
   // 4 - Passport takes code and sends requst back to Google with code
   // 5 - Google sees code and responds back with info about the user. That's when we hit above callback function
-  app.get('/auth/google/callback', passport.authenticate('google'));
+  app.get(
+    '/auth/google/callback',
+    passport.authenticate('google'),
+    (req, res) => {
+      res.redirect('/surveys');
+    }
+  );
 
   app.get('/api/current_user', (req, res) => {
     res.send(req.user);
