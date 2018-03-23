@@ -1,6 +1,7 @@
 // using because import because babel/webpack can handle this
 import React, { Component } from 'react';
 import Header from './Header';
+import Landing from './Landing';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import * as actions from '../actions';
@@ -11,10 +12,6 @@ const Dashboard = () => {
 
 const SurveyNew = () => {
   return <h2>SurveyNew</h2>;
-};
-
-const Landing = () => {
-  return <h2>Landing</h2>;
 };
 
 // BrowserRouter only takes one child
