@@ -8,6 +8,7 @@ const User = mongoose.model('users');
 
 // Takes user model and creates a unique identifer
 passport.serializeUser((user, done) => {
+  // user.id references the ID assigned by Mongo record
   done(null, user.id);
 });
 
