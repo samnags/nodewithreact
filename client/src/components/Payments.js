@@ -11,7 +11,11 @@ class Payments extends Component {
           console.log(token);
         }}
         stripeKey={process.env.REACT_APP_STRIPE_KEY}
-      />
+        name="Emaily"
+        description="5 Email Credits for $5"
+      >
+        <button className="btn">Add Credits</button>
+      </StripeCheckout>
     );
   }
 }
