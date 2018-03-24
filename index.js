@@ -35,7 +35,7 @@ require('./routes/billingRoutes')(app);
 if (process.env.NODE_ENV == 'production') {
   // Make sure Express serves production assets like main.js
   // Searching for specific files first then moves onto below
-  app.use(express.static('/client/build'));
+  app.use(express.static('client/build'));
 
   // Makes sure that Express servers index.js /react routes if it doesn't recognize route
   // If there's nothing in authRouthes, billRouthes, look above, then hit below catchall
