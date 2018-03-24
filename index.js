@@ -32,7 +32,7 @@ require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 // authRoutes is exporting an a function. Here we're executing that function with the argument of app
 
-if (process.env.env == 'production') {
+if (process.env.NODE_ENV == 'production') {
   // Make sure Express serves production assets like main.js
   // Searching for specific files first then moves onto below
   app.use(express.static('/client/build'));
